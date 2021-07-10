@@ -122,17 +122,20 @@ with open(file_to_save, "w") as txt_file:
         # 3.6.2 (28) Save the candidate results to the txt file
         txt_file.write(candidate_results)
 
-# 3.5.5 (20) To do: print out the winning candidate, vote count, and percentage 
-# (20a) Create a summary
-winning_candidate_summary = (
-    f"-------------------------\n"
-    f"Winner: {winning_candidate}\n"
-    f"Winning Vote Count: {winning_count:,}\n"
-    f"Winning Percentage: {winning_percentage:.1f}%\n"
-    f"-------------------------\n")
+    # 3.5.5 (20) To do: print out the winning candidate, vote count, and percentage 
+    # (20a) Create a summary
+    winning_candidate_summary = (
+        f"-------------------------\n"
+        f"Winner: {winning_candidate}\n"
+        f"Winning Vote Count: {winning_count:,}\n"
+        f"Winning Percentage: {winning_percentage:.1f}%\n"
+        f"-------------------------\n")
 # (20b) Print the summary 
 # 3.6.1 (22) Comment out this line of code
 #print(winning_candidate_summary)
+
+    # 3.6.3 (29) Save the winning candidate's name to the text file.
+    txt_file.write(winning_candidate_summary)
 
 # 3.5.1 (3) Print the total votes (369,711 without header)
 #print(total_votes)
