@@ -77,28 +77,50 @@ with open(file_to_load) as election_data:
             # Is alligned outside of the if statement (8) but with the for loop
         candidate_votes[candidate_name] +=1
 
-# 3.5.4 (14) Determine the percentage of votes for each candidate by looping through the counts
-    # Flush with left margin
-for candidate_name in candidate_votes: 
-    # 3.5.4 (15) Retrieve vote count of a candidate
-    votes = candidate_votes[candidate_name]
-    # 3.5.4 (16) Calculate the percentage of votes
-    vote_percentage = float(votes) / float(total_votes) * 100 
-    # 3.5.4 (17) Print the candidate name and percentage of votes
-        # Format vote_percentage to one decimal place (:.1f)
-    #print(f"{candidate_name}: received {vote_percentage:.1f}% of the vote.")
-    
-    # 3.5.5 (19) To Do: Print out each candidate's name, vote count, and percentage of votes
-    print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+# 3.6.1 (23) Save the results to our text file 
+with open(file_to_save, "w") as txt_file:
 
-    # 3.5.5 (18) Determine winning vote count and candidate
-    # (18a) Determine if the votes are greater than the winning count 
-    if (votes > winning_count) and (vote_percentage > winning_percentage):
-        # (18b) If true, then set winning_count = votes and winning_percent = vote_percentage
-        winning_count = votes
-        winning_percentage = vote_percentage
-        # (18c) Set the winning_candidate equal to the candidate's name 
-        winning_candidate = candidate_name
+    # 3.6.1 (24) Print the final vote count to the terminal 
+    election_results = (
+        f"\nElection Results\n"
+        f"-------------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"-------------------------\n")
+    # (24a) Print the Election results
+    print(election_results, end="")
+    # 3.6.1 (25) Save the final vote count to the txt file
+    txt_file.write(election_results)
+
+    # 3.5.4 (14) Determine the percentage of votes for each candidate by looping through the counts
+        # Flush with left margin
+    for candidate_name in candidate_votes: 
+        # 3.5.4 (15) Retrieve vote count of a candidate
+        votes = candidate_votes[candidate_name]
+        # 3.5.4 (16) Calculate the percentage of votes
+        vote_percentage = float(votes) / float(total_votes) * 100 
+        # 3.5.4 (17) Print the candidate name and percentage of votes
+            # Format vote_percentage to one decimal place (:.1f)
+        #print(f"{candidate_name}: received {vote_percentage:.1f}% of the vote.")
+        
+        # 3.5.5 (19) To Do: Print out each candidate's name, vote count, and percentage of votes
+        # 3.6.1 (21) Comment out this line of code
+        #print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+
+        # 3.5.5 (18) Determine winning vote count and candidate
+        # (18a) Determine if the votes are greater than the winning count 
+        if (votes > winning_count) and (vote_percentage > winning_percentage):
+            # (18b) If true, then set winning_count = votes and winning_percent = vote_percentage
+            winning_count = votes
+            winning_percentage = vote_percentage
+            # (18c) Set the winning_candidate equal to the candidate's name 
+            winning_candidate = candidate_name
+
+        # 3.6.2 (26) Create Candidate Results Variable
+        candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n") 
+        # 3.6.2 (27) Print each candidate, theri voter count, and percentage to the terminal
+        print(candidate_results)
+        # 3.6.2 (28) Save the candidate results to the txt file
+        txt_file.write(candidate_results)
 
 # 3.5.5 (20) To do: print out the winning candidate, vote count, and percentage 
 # (20a) Create a summary
@@ -109,7 +131,8 @@ winning_candidate_summary = (
     f"Winning Percentage: {winning_percentage:.1f}%\n"
     f"-------------------------\n")
 # (20b) Print the summary 
-print(winning_candidate_summary)
+# 3.6.1 (22) Comment out this line of code
+#print(winning_candidate_summary)
 
 # 3.5.1 (3) Print the total votes (369,711 without header)
 #print(total_votes)
