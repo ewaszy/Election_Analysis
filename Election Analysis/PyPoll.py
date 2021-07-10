@@ -69,6 +69,17 @@ with open(file_to_load) as election_data:
             # Is alligned outside of the if statement (8) but with the for loop
         candidate_votes[candidate_name] +=1
 
+# 3.5.4 (14) Determine the percentage of votes for each candidate by looping through the counts
+    # Flush with left margin
+for candidate_name in candidate_votes: 
+    # 3.5.4 (15) Retrieve vote count of a candidate
+    votes = candidate_votes[candidate_name]
+    # 3.5.4 (16) Calculate the percentage of votes
+    vote_percentage = float(votes) / float(total_votes) * 100 
+    # 3.5.4 (17) Print the candidate name and percentage of votes
+        # Format vote_percentage to one decimal place (:.1f)
+    print(f"{candidate_name}: received {vote_percentage:.1f}% of the vote.")
+
 # 3.5.1 (3) Print the total votes (369,711 without header)
 #print(total_votes)
 # 3.5.2 (7) Print the candidate list. 
