@@ -17,7 +17,10 @@ total_votes = 0
 
 # 3.5.2 (4) Declare a new list
 # Candidate Options
-candidate_options = [] 
+candidate_options = []
+
+# 3.5.3 (10) Declare an empty dictionary, name it candidate votes
+candidate_votes = {}
 
 # Open the election results and read the file.
 #election_data = open(file_to_load, 'r')
@@ -55,10 +58,23 @@ with open(file_to_load) as election_data:
             # 3.5.2 (9) Add it to the list of candidates
             candidate_options.append(candidate_name)
 
+            # 3.5.3 (11) Begin tracking that candidate's vote count
+                # dictionary_name[key] ; dictionary declared in step 10
+                # setting each candidates to zero at begining of for loop/analysis
+            candidate_votes[candidate_name] = 0
+
+        # 3.5.3 (13) Add a vote to the candidate's count
+        # Increment votes by 1 every time a name appears in a row
+            # If alligned with (9)(11), will only incriment 1 vote per candidate for the loop
+            # Is alligned outside of the if statement (8) but with the for loop
+        candidate_votes[candidate_name] +=1
+
 # 3.5.1 (3) Print the total votes (369,711 without header)
 #print(total_votes)
 # 3.5.2 (7) Print the candidate list. 
-print(candidate_options)
+#print(candidate_options)
+# 3.5.3 (12) Print Candidate votes dictionary
+print(candidate_votes)
 
 # Close the file.
 #election_data.close()
