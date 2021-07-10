@@ -15,6 +15,10 @@ file_to_save = os.path.join("analysis", "election_analysis.txt")
     # Set total_votes to zero; t_v must be zero every time we run the file
 total_votes = 0 
 
+# 3.5.2 (4) Declare a new list
+# Candidate Options
+candidate_options = [] 
+
 # Open the election results and read the file.
 #election_data = open(file_to_load, 'r')
 with open(file_to_load) as election_data:
@@ -40,8 +44,17 @@ with open(file_to_load) as election_data:
             # (iterate through the rows and incriment the total_votes variable by 1)
             # (For each row, add the total vote count.) 
         total_votes += 1 
+
+        # 3.5.2 (5) Print the candidate name from each row
+        candidate_name = row[2]
+
+        # 3.5.2 (6) Add the candidate name to the candidate list
+        candidate_options.append(candidate_name)
+
 # 3.5.1 (3) Print the total votes (369,711 without header)
-print(total_votes)
+#print(total_votes)
+# 3.5.2 (7) Print the candidate list. 
+print(candidate_options)
 
 # Close the file.
 #election_data.close()
