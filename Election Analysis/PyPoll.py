@@ -22,6 +22,14 @@ candidate_options = []
 # 3.5.3 (10) Declare an empty dictionary, name it candidate votes
 candidate_votes = {}
 
+# 3.5.5 (18) Winning Candidate and Winning Count Tracker
+# (18a) Declare a variable that holds an empty string value for the winning candidate
+winning_candidate = ""
+# (18b) Declare a variable for the "winning count" equal to zero
+winning_count = 0
+# (18c) Declare a variable for the "winning percentage" equal to zero
+winning_percentage = 0 
+
 # Open the election results and read the file.
 #election_data = open(file_to_load, 'r')
 with open(file_to_load) as election_data:
@@ -78,21 +86,44 @@ for candidate_name in candidate_votes:
     vote_percentage = float(votes) / float(total_votes) * 100 
     # 3.5.4 (17) Print the candidate name and percentage of votes
         # Format vote_percentage to one decimal place (:.1f)
-    print(f"{candidate_name}: received {vote_percentage:.1f}% of the vote.")
+    #print(f"{candidate_name}: received {vote_percentage:.1f}% of the vote.")
+    
+    # 3.5.5 (19) To Do: Print out each candidate's name, vote count, and percentage of votes
+    print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+
+    # 3.5.5 (18) Determine winning vote count and candidate
+    # (18a) Determine if the votes are greater than the winning count 
+    if (votes > winning_count) and (vote_percentage > winning_percentage):
+        # (18b) If true, then set winning_count = votes and winning_percent = vote_percentage
+        winning_count = votes
+        winning_percentage = vote_percentage
+        # (18c) Set the winning_candidate equal to the candidate's name 
+        winning_candidate = candidate_name
+
+# 3.5.5 (20) To do: print out the winning candidate, vote count, and percentage 
+# (20a) Create a summary
+winning_candidate_summary = (
+    f"-------------------------\n"
+    f"Winner: {winning_candidate}\n"
+    f"Winning Vote Count: {winning_count:,}\n"
+    f"Winning Percentage: {winning_percentage:.1f}%\n"
+    f"-------------------------\n")
+# (20b) Print the summary 
+print(winning_candidate_summary)
 
 # 3.5.1 (3) Print the total votes (369,711 without header)
 #print(total_votes)
 # 3.5.2 (7) Print the candidate list. 
 #print(candidate_options)
 # 3.5.3 (12) Print Candidate votes dictionary
-print(candidate_votes)
+#print(candidate_votes)
 
 # Close the file.
 #election_data.close()
 
 # Using the open() function with the "w" mode we will write data to the file.
 #outfile = open(file_to_save, "w")
-with open(file_to_save, "w") as txt_file:
+#with open(file_to_save, "w") as txt_file:
 
 # Write some data to the file
 #outfile.write("Hello World")
@@ -107,7 +138,7 @@ with open(file_to_save, "w") as txt_file:
     #txt_file.write("Arapahoe, Denver, Jefferson")
     # Add newline escape sequence to end of first 2 counties
     # anything after \n will start on a new line 
-    txt_file.write("Arapahoe\nDenver\nJefferson")
+    #txt_file.write("Arapahoe\nDenver\nJefferson")
     
 # Close the file 
 #outfile.close()
