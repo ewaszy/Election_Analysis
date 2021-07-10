@@ -11,6 +11,10 @@ file_to_load = os.path.join("Resources", "election_results.csv")
 # Create a filename variable to a direct or indirect path to the file.
 file_to_save = os.path.join("analysis", "election_analysis.txt")
 
+# 3.5.1 (1) Initialize a total vote counter
+    # Set total_votes to zero; t_v must be zero every time we run the file
+total_votes = 0 
+
 # Open the election results and read the file.
 #election_data = open(file_to_load, 'r')
 with open(file_to_load) as election_data:
@@ -22,15 +26,22 @@ with open(file_to_load) as election_data:
         # this allows us to read the CSV file using the csv module with the reader function
     file_reader = csv.reader(election_data)
 
-    # Print each row in the csv file
-    #for row in file_reader:
-        #print(row)
-
-    # Print the header row
+    # Read the header row
         # Confirmed we have skipped header row, can now iterate througheach row
         # to gather data for analysis 
     headers = next(file_reader)
-    print(headers)
+    # Print the header row
+    #print(headers)
+
+    # Print each row in the csv file
+    for row in file_reader:
+        #print(row)
+        # 3.5.1 (2) Add to the total vote count. 
+            # (iterate through the rows and incriment the total_votes variable by 1)
+            # (For each row, add the total vote count.) 
+        total_votes += 1 
+# 3.5.1 (3) Print the total votes (369,711 without header)
+print(total_votes)
 
 # Close the file.
 #election_data.close()
@@ -54,10 +65,8 @@ with open(file_to_save, "w") as txt_file:
     # anything after \n will start on a new line 
     txt_file.write("Arapahoe\nDenver\nJefferson")
     
-
 # Close the file 
 #outfile.close()
-
 
 # The data we need to retrieve
 # 1. The total number of votes cast 
